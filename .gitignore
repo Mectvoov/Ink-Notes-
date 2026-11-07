@@ -1,0 +1,13 @@
+.DS_Store
+**/.DS_Store
+.trash/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/*/data.json.old
+*.tmp
+# 个人内容：日记正文与附件不入库
+ink notes/日记/**
+!ink notes/日记/.gitkeep
+ink notes/附件/**
+!ink notes/附件/.gitkeep

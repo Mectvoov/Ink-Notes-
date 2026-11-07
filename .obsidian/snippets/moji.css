@@ -1,0 +1,862 @@
+:root {
+  --mj-paper: #ffffff;
+  --mj-paper-deep: #f6f6f7;
+  --mj-ink: #1f2022;
+  --mj-muted: #717277;
+  --mj-line: #e8e8ea;
+  --mj-accent: #315d78;
+  --mj-white: #ffffff;
+}
+
+.markdown-preview-view.moji-home,
+.markdown-source-view.moji-home,
+.markdown-preview-view.moji-diary,
+.markdown-source-view.moji-diary,
+.markdown-preview-view.moji-index,
+.markdown-source-view.moji-index {
+  --text-accent: var(--mj-accent);
+  --text-accent-hover: #264b62;
+  --text-normal: var(--mj-ink);
+  --text-muted: var(--mj-muted);
+  --interactive-accent: var(--mj-accent);
+  --interactive-accent-hover: #264b62;
+  background: var(--mj-paper);
+  color: var(--mj-ink);
+}
+
+.markdown-preview-view.moji-diary,
+.markdown-source-view.moji-diary {
+  --font-text-theme: "PingFang SC", "Hiragino Sans GB", sans-serif;
+}
+
+.moji-home .inline-title,
+.moji-diary .inline-title,
+.moji-index .inline-title,
+.markdown-preview-view.moji-diary .metadata-container,
+.markdown-preview-view.moji-index .metadata-container,
+.markdown-source-view.moji-index .metadata-container,
+.markdown-preview-view:has(.mj-hero) .metadata-container,
+.markdown-source-view:has(.mj-hero) .metadata-container {
+  display: none;
+}
+
+.moji-home .markdown-preview-sizer,
+.moji-home .cm-sizer {
+  max-width: 980px;
+  margin-inline: auto;
+  padding-inline: 28px;
+  padding-bottom: 72px;
+}
+
+.mj-hero {
+  padding: 28px 0 34px;
+  border-bottom: 1px solid var(--mj-line);
+  margin-bottom: 26px;
+}
+
+.mj-kicker {
+  color: var(--mj-muted);
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.mj-hero h1 {
+  color: var(--mj-ink);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 10px 0 8px;
+}
+
+.mj-hero p {
+  color: var(--mj-muted);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.mj-dashboard {
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+}
+
+.mj-dashboard h2 {
+  color: var(--mj-ink);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.mj-dashboard a.internal-link {
+  color: var(--mj-accent);
+  text-decoration: none;
+}
+
+.mj-dashboard a.internal-link:hover {
+  color: #264b62;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mj-today {
+  align-items: center;
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 8px;
+  display: flex;
+  gap: 28px;
+  justify-content: space-between;
+  padding: 26px 28px;
+}
+
+.mj-today-copy {
+  min-width: 0;
+}
+
+.mj-today h2 {
+  font-size: 32px;
+  margin: 6px 0 5px;
+  white-space: nowrap;
+}
+
+.mj-date-line {
+  color: var(--mj-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.mj-actions {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mj-action {
+  align-items: center;
+  border: 1px solid var(--mj-line);
+  border-radius: 6px;
+  color: var(--mj-ink);
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 650;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 14px;
+  text-decoration: none;
+}
+
+.mj-action:hover {
+  background: var(--mj-paper-deep);
+  text-decoration: none;
+}
+
+.mj-dashboard a.mj-action,
+.mj-dashboard button.mj-action {
+  border-color: var(--mj-line);
+  color: var(--mj-ink);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.mj-dashboard a.mj-action:hover,
+.mj-dashboard button.mj-action:hover {
+  border-color: #c9c1b5;
+}
+
+.mj-dashboard a.mj-action-primary,
+.mj-dashboard button.mj-action-primary {
+  background: var(--mj-ink);
+  border-color: var(--mj-ink);
+  color: var(--mj-white) !important;
+}
+
+.mj-dashboard a.mj-action-primary:hover,
+.mj-dashboard button.mj-action-primary:hover {
+  background: #111;
+  color: var(--mj-white) !important;
+}
+
+.mj-dashboard button.mj-action:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.mj-today-meta,
+.mj-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.mj-chip {
+  background: var(--mj-paper-deep);
+  border-radius: 999px;
+  color: var(--mj-muted);
+  display: inline-flex;
+  font-size: 11px;
+  line-height: 1;
+  padding: 6px 9px;
+}
+
+.mj-stats {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 28px 0 34px;
+}
+
+.mj-stat {
+  border-left: 1px solid var(--mj-line);
+  min-width: 0;
+  padding: 2px 24px;
+}
+
+.mj-stat:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.mj-stat strong {
+  color: var(--mj-ink);
+  display: block;
+  font-family: "Avenir Next", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.mj-stat span {
+  color: var(--mj-muted);
+  display: block;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.mj-section {
+  border-top: 1px solid var(--mj-line);
+  padding-top: 24px;
+  margin-top: 28px;
+}
+
+.mj-section-head {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mj-text-link {
+  color: var(--mj-muted);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.mj-text-link:hover {
+  color: var(--mj-accent);
+}
+
+.mj-recent-list {
+  margin-top: 12px;
+}
+
+.mj-recent-row {
+  align-items: center;
+  border-bottom: 1px solid rgba(222, 216, 205, 0.7);
+  display: flex;
+  min-height: 58px;
+  padding: 9px 0;
+}
+
+.mj-recent-row:last-child {
+  border-bottom: 0;
+}
+
+.mj-recent-body {
+  align-items: baseline;
+  display: flex;
+  flex: 1;
+  gap: 14px;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.mj-recent-link {
+  color: var(--mj-ink);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 17px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mj-recent-link:hover {
+  color: var(--mj-accent);
+}
+
+.mj-recent-meta {
+  color: var(--mj-muted);
+  flex: 0 0 auto;
+  font-size: 12px;
+}
+
+.mj-empty {
+  border: 1px dashed var(--mj-line);
+  border-radius: 8px;
+  color: var(--mj-muted);
+  font-size: 13px;
+  margin-top: 16px;
+  padding: 26px;
+  text-align: center;
+}
+
+.mj-category-chip {
+  align-items: center;
+  border: 1px solid var(--mj-line);
+  border-radius: 6px;
+  color: var(--mj-muted);
+  display: inline-flex;
+  font-size: 12px;
+  gap: 16px;
+  min-height: 34px;
+  padding: 0 11px;
+}
+
+.mj-category-chip strong {
+  color: var(--mj-ink);
+  font-weight: 600;
+}
+
+.mj-category-manager {
+  margin-top: 16px;
+}
+
+.mj-category-manage-list {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+}
+
+.mj-category-manage-item {
+  align-items: center;
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 6px;
+  display: flex;
+  gap: 10px;
+  min-height: 42px;
+  padding: 6px 8px 6px 12px;
+}
+
+.mj-category-manage-name {
+  color: var(--mj-ink);
+  flex: 1;
+  font-size: 13px;
+}
+
+.mj-dashboard a.mj-category-manage-name {
+  color: var(--mj-ink);
+  text-decoration: none;
+}
+
+.mj-dashboard a.mj-category-manage-name:hover {
+  color: var(--mj-accent);
+}
+
+.mj-category-manage-count {
+  background: var(--mj-paper-deep);
+  border-radius: 999px;
+  color: var(--mj-muted);
+  font-size: 11px;
+  min-width: 22px;
+  padding: 4px 7px;
+  text-align: center;
+}
+
+.mj-category-manage-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.mj-category-manage-item.is-editing {
+  border-color: var(--mj-accent);
+  padding-block: 5px;
+}
+
+.mj-category-edit-form {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  gap: 5px;
+  min-width: 0;
+}
+
+.mj-category-edit-form .mj-category-input {
+  height: 30px;
+}
+
+.mj-category-error {
+  color: #a43b3b;
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+.mj-small-action {
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: none;
+  color: var(--mj-muted);
+  cursor: pointer;
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+  font-size: 11px;
+  min-height: 28px;
+  padding: 0 6px;
+}
+
+.mj-small-action:hover {
+  background: var(--mj-paper-deep);
+  color: var(--mj-ink);
+}
+
+.mj-small-action.is-danger {
+  color: #a43b3b;
+}
+
+.mj-category-add {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.mj-category-input {
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 6px;
+  color: var(--mj-ink);
+  flex: 1;
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+  font-size: 13px;
+  height: 36px;
+  min-width: 0;
+  padding: 0 10px;
+}
+
+.mj-category-input:focus {
+  border-color: var(--mj-accent);
+  box-shadow: 0 0 0 2px rgba(49, 93, 120, 0.12);
+}
+
+.mj-category-add .mj-action {
+  min-width: 64px;
+}
+
+.moji-diary .markdown-preview-sizer,
+.moji-diary .cm-sizer {
+  max-width: 820px;
+  margin-inline: auto;
+  padding-inline: 42px;
+  padding-bottom: 96px;
+}
+
+.moji-diary .markdown-preview-sizer {
+  padding-top: 28px;
+}
+
+.moji-diary .cm-content {
+  padding-top: 18px;
+}
+
+.moji-diary h1,
+.moji-diary .cm-header-1 {
+  color: var(--mj-ink);
+  font-family: "PingFang SC", "Hiragino Sans GB", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.45;
+  margin: 0 0 20px;
+}
+
+.moji-diary h2,
+.moji-diary .cm-header-2 {
+  color: var(--mj-ink);
+  font-family: "PingFang SC", "Hiragino Sans GB", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 26px 0 10px;
+}
+
+.moji-diary p,
+.moji-diary li,
+.moji-diary .cm-line {
+  color: var(--mj-ink);
+  font-family: "PingFang SC", "Hiragino Sans GB", sans-serif;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.mj-entry-meta {
+  align-items: baseline;
+  border-bottom: 1px solid var(--mj-line);
+  color: var(--mj-muted);
+  display: flex;
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+  font-size: 12px;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+}
+
+.mj-entry-date {
+  color: var(--mj-ink);
+  font-weight: 600;
+}
+
+.mj-entry-time::before,
+.mj-entry-weekday::before {
+  color: #c4c5c8;
+  content: "·";
+  margin-right: 16px;
+}
+
+.moji-diary .metadata-container {
+  background: transparent;
+  border-bottom: 1px solid var(--mj-line);
+  border-radius: 0;
+  margin-bottom: 26px;
+  opacity: 0.78;
+  padding: 0 0 14px;
+}
+
+.moji-diary .metadata-container .metadata-property {
+  display: none;
+}
+
+.moji-diary .metadata-container .metadata-property[data-property-key="category"],
+.moji-diary .metadata-container .metadata-property[data-property-key="mood"],
+.moji-diary .metadata-container .metadata-property[data-property-key="weather"],
+.moji-diary .metadata-container .metadata-property[data-property-key="tags"] {
+  display: flex;
+}
+
+.moji-diary .callout {
+  border-radius: 8px;
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+}
+
+.moji-diary .callout[data-callout="moji-meta"] {
+  background: transparent;
+  border: 0;
+  border-left: 2px solid var(--mj-accent);
+  border-radius: 0;
+  color: var(--mj-muted);
+  margin: 0 0 16px;
+  padding: 4px 0 4px 16px;
+}
+
+.moji-diary .callout[data-callout="moji-meta"] .callout-title {
+  display: none;
+}
+
+.moji-diary .callout[data-callout="moji-photo"] {
+  background: var(--mj-paper-deep);
+  border: 1px dashed #cec6b8;
+  min-height: 120px;
+  padding: 18px;
+}
+
+.moji-diary .callout[data-callout="moji-photo"] .callout-title {
+  display: none;
+}
+
+.moji-diary img {
+  border-radius: 0;
+  display: block;
+  height: auto;
+  margin: 18px 0 14px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.moji-diary .internal-embed.image-embed {
+  display: block;
+  margin: 18px 0 14px;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.moji-diary .internal-embed.image-embed img {
+  height: auto !important;
+  margin: 0;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.moji-index .markdown-preview-sizer {
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 28px 32px 72px;
+}
+
+.mj-index-page {
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+}
+
+.mj-index-heading {
+  border-bottom: 1px solid var(--mj-line);
+  color: var(--mj-ink);
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  padding-bottom: 16px;
+}
+
+.mj-index-month {
+  align-items: center;
+  color: var(--mj-ink);
+  display: flex;
+  font-size: 15px;
+  font-weight: 550;
+  gap: 18px;
+  justify-content: center;
+  margin: 28px 0 10px;
+}
+
+.mj-index-month::before,
+.mj-index-month::after {
+  background: #b9babe;
+  content: "";
+  height: 4px;
+  transform: rotate(45deg);
+  width: 4px;
+}
+
+.mj-index-entry {
+  border-bottom: 1px solid var(--mj-line);
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 58px minmax(0, 1fr);
+  padding: 20px 12px;
+}
+
+.mj-index-entry.has-thumb {
+  grid-template-columns: 58px minmax(0, 1fr) 72px;
+}
+
+.mj-index-thumb {
+  align-self: center;
+  border-radius: 2px;
+  height: 72px;
+  object-fit: cover;
+  width: 72px;
+}
+
+.mj-index-entry:first-of-type {
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.mj-index-date {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+.mj-index-date strong {
+  color: var(--mj-ink);
+  font-size: 28px;
+  font-weight: 650;
+  line-height: 1;
+}
+
+.mj-index-time,
+.mj-index-weekday {
+  color: var(--mj-muted);
+  font-size: 11px;
+  line-height: 1.45;
+  margin-left: 16px;
+}
+
+.mj-index-time {
+  margin-top: 5px;
+}
+
+.mj-index-copy {
+  min-width: 0;
+}
+
+.mj-index-page a.internal-link {
+  color: var(--mj-ink);
+  display: block;
+  font-size: 16px;
+  line-height: 1.75;
+  text-decoration: none;
+}
+
+.mj-index-page a.internal-link:hover {
+  color: var(--mj-accent);
+}
+
+.mj-index-meta {
+  color: var(--mj-muted);
+  display: flex;
+  font-size: 11px;
+  gap: 14px;
+  margin-top: 7px;
+}
+
+.mj-index-meta span::before {
+  content: "·";
+  margin-right: 6px;
+}
+
+.mj-index-meta span:first-child::before {
+  display: none;
+}
+
+.mj-index-empty {
+  color: var(--mj-muted);
+  padding: 42px 0;
+  text-align: center;
+}
+
+.mj-context-menu {
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(31, 32, 34, 0.14);
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+  min-width: 176px;
+  padding: 6px;
+  position: fixed;
+  z-index: 1000;
+}
+
+.mj-context-heading {
+  color: var(--mj-muted);
+  font-size: 11px;
+  padding: 7px 9px 5px;
+}
+
+.mj-context-item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: none;
+  color: var(--mj-ink);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: 13px;
+  justify-content: space-between;
+  min-height: 32px;
+  padding: 5px 9px;
+  text-align: left;
+  width: 100%;
+}
+
+.mj-context-item:hover {
+  background: var(--mj-paper-deep);
+}
+
+.mj-context-item.is-current::after {
+  color: var(--mj-muted);
+  content: "当前";
+  font-size: 10px;
+  margin-left: 16px;
+}
+
+.mj-context-item.is-danger {
+  color: #a43b3b;
+}
+
+.mj-context-divider {
+  border-top: 1px solid var(--mj-line);
+  margin: 5px 0;
+}
+
+.mj-index-entry {
+  position: relative;
+}
+
+.mj-index-entry {
+  border-top: 1px solid var(--mj-line);
+}
+
+@media (max-width: 700px) {
+  .moji-home .markdown-preview-sizer,
+  .moji-home .cm-sizer,
+  .moji-diary .markdown-preview-sizer,
+  .moji-diary .cm-sizer,
+  .moji-index .markdown-preview-sizer {
+    padding-inline: 18px;
+  }
+
+  .mj-hero {
+    padding-top: 18px;
+  }
+
+  .mj-hero h1 {
+    font-size: 36px;
+  }
+
+  .mj-today {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    padding: 22px;
+  }
+
+  .mj-actions {
+    width: 100%;
+  }
+
+  .mj-action {
+    flex: 1 1 128px;
+  }
+
+  .mj-stats {
+    margin-block: 24px 30px;
+  }
+
+  .mj-stat {
+    padding-inline: 14px;
+  }
+
+  .mj-stat strong {
+    font-size: 24px;
+  }
+
+  .mj-recent-body {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .mj-recent-link {
+    max-width: 100%;
+  }
+
+  .mj-index-entry.has-thumb {
+    gap: 14px;
+    grid-template-columns: 48px minmax(0, 1fr) 56px;
+  }
+
+  .mj-index-thumb {
+    height: 56px;
+    width: 56px;
+  }
+
+  .moji-diary h1,
+  .moji-diary .cm-header-1 {
+    font-size: 29px;
+  }
+}

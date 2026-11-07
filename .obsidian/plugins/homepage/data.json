@@ -1,0 +1,24 @@
+{
+  "version": 5,
+  "homepages": {
+    "Main Homepage": {
+      "value": "ink notes/首页.md",
+      "kind": "File",
+      "openOnStartup": true,
+      "openMode": "Replace all open notes",
+      "manualOpenMode": "Keep open notes",
+      "view": "Reading view",
+      "revertView": true,
+      "openWhenEmpty": true,
+      "openOnNewTab": false,
+      "refreshDataview": true,
+      "autoCreate": false,
+      "autoScroll": false,
+      "pin": true,
+      "commands": [],
+      "alwaysApply": false,
+      "hideReleaseNotes": false
+    }
+  },
+  "separateMobile": false
+}

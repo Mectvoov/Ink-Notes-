@@ -1,0 +1,14 @@
+{
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "ink notes/附件",
+  "propertiesInDocument": "visible",
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "defaultViewMode": "preview",
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}
