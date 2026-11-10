@@ -8,6 +8,16 @@
   --mj-white: #ffffff;
 }
 
+body.theme-dark {
+  --mj-paper: #17181a;
+  --mj-paper-deep: #202124;
+  --mj-ink: #e8e8ea;
+  --mj-muted: #9b9ca1;
+  --mj-line: #2e3034;
+  --mj-accent: #7fb0c9;
+  --mj-white: #17181a;
+}
+
 .markdown-preview-view.moji-home,
 .markdown-source-view.moji-home,
 .markdown-preview-view.moji-diary,
@@ -33,6 +43,7 @@
 .moji-diary .inline-title,
 .moji-index .inline-title,
 .markdown-preview-view.moji-diary .metadata-container,
+.markdown-source-view.moji-diary .metadata-container,
 .markdown-preview-view.moji-index .metadata-container,
 .markdown-source-view.moji-index .metadata-container,
 .markdown-preview-view:has(.mj-hero) .metadata-container,
@@ -188,8 +199,7 @@
   opacity: 0.7;
 }
 
-.mj-today-meta,
-.mj-chip-row {
+.mj-today-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
@@ -252,60 +262,6 @@
   justify-content: space-between;
 }
 
-.mj-text-link {
-  color: var(--mj-muted);
-  font-size: 12px;
-  text-decoration: none;
-}
-
-.mj-text-link:hover {
-  color: var(--mj-accent);
-}
-
-.mj-recent-list {
-  margin-top: 12px;
-}
-
-.mj-recent-row {
-  align-items: center;
-  border-bottom: 1px solid rgba(222, 216, 205, 0.7);
-  display: flex;
-  min-height: 58px;
-  padding: 9px 0;
-}
-
-.mj-recent-row:last-child {
-  border-bottom: 0;
-}
-
-.mj-recent-body {
-  align-items: baseline;
-  display: flex;
-  flex: 1;
-  gap: 14px;
-  justify-content: space-between;
-  min-width: 0;
-}
-
-.mj-recent-link {
-  color: var(--mj-ink);
-  font-family: "Songti SC", "STSong", serif;
-  font-size: 17px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.mj-recent-link:hover {
-  color: var(--mj-accent);
-}
-
-.mj-recent-meta {
-  color: var(--mj-muted);
-  flex: 0 0 auto;
-  font-size: 12px;
-}
-
 .mj-empty {
   border: 1px dashed var(--mj-line);
   border-radius: 8px;
@@ -314,23 +270,6 @@
   margin-top: 16px;
   padding: 26px;
   text-align: center;
-}
-
-.mj-category-chip {
-  align-items: center;
-  border: 1px solid var(--mj-line);
-  border-radius: 6px;
-  color: var(--mj-muted);
-  display: inline-flex;
-  font-size: 12px;
-  gap: 16px;
-  min-height: 34px;
-  padding: 0 11px;
-}
-
-.mj-category-chip strong {
-  color: var(--mj-ink);
-  font-weight: 600;
 }
 
 .mj-category-manager {
@@ -835,16 +774,6 @@
     font-size: 24px;
   }
 
-  .mj-recent-body {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .mj-recent-link {
-    max-width: 100%;
-  }
-
   .mj-index-entry.has-thumb {
     gap: 14px;
     grid-template-columns: 48px minmax(0, 1fr) 56px;
@@ -859,4 +788,191 @@
   .moji-diary .cm-header-1 {
     font-size: 29px;
   }
+}
+
+/* ---------- 日记分类选择器（dv.view 渲染） ---------- */
+
+.mj-picker {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding-top: 2px;
+}
+
+.mj-picker-label {
+  color: var(--mj-muted);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.mj-picker-chips {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mj-picker-chip {
+  background: transparent;
+  border: 1px solid var(--mj-line);
+  border-radius: 999px;
+  box-shadow: none;
+  color: var(--mj-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  height: 26px;
+  line-height: 1;
+  padding: 0 12px;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.mj-picker-chip:hover {
+  background: var(--mj-paper-deep);
+  border-color: #d6d0c6;
+  color: var(--mj-ink);
+}
+
+.mj-picker-chip.is-active {
+  background: var(--mj-ink);
+  border-color: var(--mj-ink);
+  color: var(--mj-white);
+}
+
+.mj-picker-chip.is-active:hover {
+  background: #111;
+  color: var(--mj-white);
+}
+
+.mj-picker-add {
+  border-style: dashed;
+  color: var(--mj-muted);
+}
+
+.mj-picker-status {
+  color: var(--mj-muted);
+  font-size: 11px;
+  min-height: 1em;
+}
+
+.mj-picker-form {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+}
+
+.mj-picker-input {
+  flex: 0 0 auto;
+  font-size: 12px;
+  height: 26px;
+  padding: 0 10px;
+  width: 168px;
+}
+
+/* ---------- 索引页分类查看条 ---------- */
+
+.mj-index-filter {
+  border-bottom: 1px solid var(--mj-line);
+  margin-bottom: 4px;
+  padding-bottom: 18px;
+}
+
+.mj-filter-head {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.mj-filter-label {
+  color: var(--mj-muted);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.mj-filter-hint {
+  color: var(--mj-muted);
+  font-size: 11px;
+  opacity: 0.65;
+}
+
+.mj-filter-chips {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mj-filter-chip {
+  background: transparent;
+  border: 1px solid var(--mj-line);
+  border-radius: 999px;
+  box-shadow: none;
+  color: var(--mj-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  height: 26px;
+  line-height: 1;
+  padding: 0 12px;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.mj-filter-chip:hover {
+  background: var(--mj-paper-deep);
+  border-color: #d6d0c6;
+  color: var(--mj-ink);
+}
+
+.mj-filter-chip.is-active {
+  background: var(--mj-ink);
+  border-color: var(--mj-ink);
+  color: var(--mj-white);
+}
+
+.mj-filter-chip.is-active:hover {
+  background: #111;
+  color: var(--mj-white);
+}
+
+.mj-index-foot {
+  border-top: 1px solid var(--mj-line);
+  color: var(--mj-muted);
+  font-size: 11px;
+  margin-top: 28px;
+  padding-top: 14px;
+  text-align: center;
+}
+
+.mj-categories,
+.mj-home-index {
+  border-top: 1px solid var(--mj-line);
+}
+
+.mj-section-foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.mj-load-more {
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 999px;
+  color: var(--mj-muted);
+  cursor: pointer;
+  display: block;
+  font-family: inherit;
+  font-size: 12px;
+  margin: 22px auto 0;
+  padding: 9px 18px;
+}
+
+.mj-load-more:hover {
+  border-color: var(--mj-ink);
+  color: var(--mj-ink);
 }

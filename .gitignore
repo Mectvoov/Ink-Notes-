@@ -11,3 +11,9 @@ ink notes/日记/**
 !ink notes/日记/.gitkeep
 ink notes/附件/**
 !ink notes/附件/.gitkeep
+
+# Claudian 会话与本地设置（含对话记录，不入库）
+.claudian/
+
+# 本地 AI 插件（体积大、含个人设置），不入库
+.obsidian/plugins/realclaudian/
