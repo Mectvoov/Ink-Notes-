@@ -132,3 +132,32 @@ Templater 在 `ink notes/日记/` 下创建文件时自动套用 `ink notes/模�
 本仓库记录的是 vault 骨架与配置的版本历史，包括页面、模板、样式和插件设置。个人日记与附件不进入版本库；需要备份个人内容时，请自行建立私有仓库。
 
 `.obsidian/workspace.json`、`workspace-mobile.json`、缓存目录、`.trash/`、`.DS_Store`、旧插件数据备份和临时文件不会入库；`.obsidian/plugins/*/data.json` 属于插件设置，会保留在版本库中。
+
+## 上传与更新
+
+仓库已绑定远端 `origin → https://github.com/Mectvoov/Ink-Notes-.git`，本地分支 `main`。日常更新三步：
+
+```bash
+cd 墨记          # 换成你本地的 vault 根目录
+git add -A
+git commit -m "update: 说明本次改动"
+git push
+```
+
+首次推送带上游：`git push -u origin main`。
+
+推送前预检私人内容是否混入，输出「干净」才继续：
+
+```bash
+git add -A -n | grep -E "日记/|附件/|\.claudian" || echo "干净"
+```
+
+认证走 macOS 钥匙串（`.git/config` 里 `credential.helper = osxkeychain`），GitHub token 只需存一次，之后 `git push` 不再询问：
+
+```bash
+read -rs GH_TOKEN && printf "protocol=https\nhost=github.com\nusername=Mectvoov\npassword=%s\n\n" "$GH_TOKEN" | git credential-osxkeychain store && unset GH_TOKEN
+```
+
+token 在 <https://github.com/settings/tokens> 生成：classic 勾 `repo`，或 fine-grained 只给本仓库 `Contents: Read and write`。存错了用 `printf "protocol=https\nhost=github.com\n\n" | git credential-osxkeychain erase` 清掉重存。
+
+核对是否推成功：`git log --oneline -1` 与 `git ls-remote --heads origin`，远端 `main` 应与本地 HEAD 一致。
